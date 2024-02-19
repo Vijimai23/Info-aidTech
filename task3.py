@@ -1,0 +1,51 @@
+from tkinter import *
+import random
+
+#creating root window
+
+root=Tk()
+root.geometry('700x550')
+root.title('Dice Rolling Game')
+
+def roll_dice():
+    dice1_result = random.randint(1, 6)
+    dice2_result = random.randint(1, 6)
+
+    dice1_label.config(text=f"Dice1 Rolled the number:{dice1_result}")
+    dice2_label.config(text=f"Dice2 Rolled the number:{dice2_result}")
+
+    total=dice1_result + dice2_result
+
+    result_label.config(text=f"Totally You Rolled: {total}")
+
+def quit_game():
+    root.destroy()
+
+#creating main_frame
+
+main_frame = Frame(root,bg='lavender',highlightbackground='black',highlightthickness=3,width=650,height=400)
+main_frame.place(x=10,y=10)
+
+#creating label_frame 
+
+dice1_label=Label(main_frame,bg='white',font=('bold',18))
+dice1_label.place(x=10,y=100)
+
+dice2_label=Label(main_frame,bg='white',font=('bold',18))
+dice2_label.place(x=340,y=100)
+
+result_label=Label(main_frame,bg='white',font=('bold',30))
+result_label.place(x=120,y=200)
+
+label_frame = Label(main_frame,bg='lavender',text='Dice Rolling Game',font=('bold',20))
+label_frame.place(x=200,y=20)
+
+#creating  buttons
+
+roll_button = Button(main_frame,bg='green',text='Roll Dice',font=('bold',22),command=roll_dice)
+roll_button.place(x=40,y=300)
+
+quit_button = Button(main_frame,bg='red',text='Quit Game',font=('bold',22),command=quit_game)
+quit_button.place(x=420,y=300)
+
+root.mainloop()
